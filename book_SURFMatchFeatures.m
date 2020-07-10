@@ -9,9 +9,9 @@ close all;
 clc;
 
 %% Read image
-I1 = imread('LostBook3.jpg');
+I1 = imread('BookSpine.jpg');
 figure; imshow(I1); title('Obj');
-I2 = imread('ClutteredScene3.jpg');
+I2 = imread('bookshelf.jpg');
 figure; imshow(I2); title('Scene');
 
 % Define location of object in I1
