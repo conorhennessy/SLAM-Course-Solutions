@@ -22,6 +22,16 @@ b) Transformation from x1 to x2:
         T = x2 - x1
         ∴ T = [ (x2.x - x1.x), (x2.y - x1.y), (x2.z - x1.z)]
 
+    Also for Odometry information u from x1 to x2:
+        u = [rot1, trans, rot2]
+
+        Translation:
+        trans = sqrt((x2.x - x1.x)^2+(x2.y - x1.y)^2)
+        Rotatation at x1 (rot1):
+        rot1 = atan2(x2.y - x1.y, x2.x - x1.x) - x1.θ
+        Rotatation at x2 (rot2):
+        rot2 = x2.θ - x1.θ - rot1
+
 c) Given root pose x = [1, 1, pi/2]
          observation z = [2, 0]
 
