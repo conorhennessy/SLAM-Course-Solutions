@@ -1,0 +1,34 @@
+Ex1: 
+Completed, no answers req.
+
+Ex2:
+Odometry model implemented in `motion_command.m` script
+
+Ex3:
+a) Functions implemented in `v2m.m` & `t2v.m` respectively 
+   Not tested 
+
+b) Transformation from x1 to x2:
+    We wish to caluclate a 3x3 transformation matrix T, to represent this transformation,
+    T = [r, t; 0, 1] where `r` is the 3x3 rotation matrix and `t` is a 3x1 the translation vector. 
+    All as x2 = x1 + T.
+
+    So for pose x1 to x2:
+        Rotation is the difference in Theta, from x1 to x2:
+        θ = x2.θ - x1.θ
+        R = [ Cosθ, -sinθ; sinθ, Cosθ ]
+
+        Translation is the difference in x & y, from x1 to x2:
+        T = x2 - x1
+        ∴ T = [ (x2.x - x1.x), (x2.y - x1.y), (x2.z - x1.z)]
+
+c) Given root pose x = [1, 1, pi/2]
+         observation z = [2, 0]
+
+    R = [ Cosθ, -sinθ; sinθ, Cosθ ]
+    with θ = pi/2
+    ∴ R = [0, -1; 1, 0]
+
+    POI = R * z
+        = [0, -1; 1, 0] * [2, 0]
+        = [-3, 1]
