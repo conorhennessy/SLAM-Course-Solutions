@@ -16,13 +16,13 @@ clear all;
 close all;
 
 % Make tools available
-addpath('tools');
+%addpath('tools');
 
 % Read world data, i.e. landmarks. The true landmark positions are not given to the robot
-landmarks = read_world('../data/world.dat');
+landmarks = read_world('world.dat');
 % load landmarks;
 % Read sensor readings, i.e. odometry and range-bearing sensor
-data = read_data('../data/sensor_data.dat');
+data = read_data('sensor_data.dat');
 %load data;
 
 INF = 1000;
