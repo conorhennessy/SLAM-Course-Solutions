@@ -12,15 +12,15 @@ function [mu, sigma] = prediction_step(mu, sigma, u)
 
 v = zeros(m,1);
 
-mu(1, 1) = mu(1) + (u.t * cos(v(3) + u.r1));
-mu(2, 1) = mu(2) + (u.t * sin(v(3) + u.r1));
+mu(1, 1) = mu(1) + (u.t * cos(mu(3) + u.r1));
+mu(2, 1) = mu(2) + (u.t * sin(mu(3) + u.r1));
 mu(3, 1) = mu(3) + (u.r1 + u.r2);
 mu(3, 1) = normalize_angle(mu(3, 1));
 
 % Compute the 3x3 Jacobian Gx of the motion model
-Gx = zeros(3, 3);
-Gx(1, 3) = -u.t * cos(v(3) + u.r1);
-Gx(2, 3) = u.t * sin(v(3) + u.r1);
+Gx = eye(3, 3);
+Gx(1, 3) = -u.t * cos(mu(3) + u.r1);
+Gx(2, 3) = u.t * sin(mu(3) + u.r1);
 
 % Construct the full Jacobian G
 G = [Gx, zeros(3, n-3); zeros(n-3, 3), eye(n-3)];
