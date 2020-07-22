@@ -14,15 +14,13 @@ sigma_points = zeros(n, 2*n+1);
 % First sigma point is the mean
 sigma_points(:, 1) = mu;
 % For remaining sigma points
-% first, compute alternative to the square root matrix, the Cholesky decompositon by Cholesky matrix (sigma = L * L^T)
-cholesky_matrix = chol((n+lambda)*sigma, "lower");
-for i = 1:2n
-    if i <= n
-        sigma_points(:, i+1) = mu + cholesky_matrix(:, i);
-    endif
-    if i > n
-        sigma_points(:, i+1) = mu - cholesky_matrix(:, i);
-    endif
+% first, compute the square root matrix
+sqrtm_matrix = sqrtm((n+lambda)*sigma);
+for i=1:n
+    sigma_points(:,i+1) = mu + sqrtm_matrix(:,i);
+endfor
+for i=n+1:2*n
+    sigma_points(:,i+1) = mu - sqrtm_matrix(:,i-n);
 endfor
 
 % TODO compute weight vectors w_m mean and w_c covariance
