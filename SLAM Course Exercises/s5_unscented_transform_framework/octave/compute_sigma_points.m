@@ -8,13 +8,9 @@ function [sigma_points, w_m, w_c] = compute_sigma_points(mu, sigma, lambda, alph
 % They are later used to recover the mean and covariance respectively.
 
 n = length(mu);
-sigma_points = zeros(n, 2*n+1);
-
-%init the weights
-w_m = zeros(1, 2*n+1);
-w_c = zeros(1, 2*n+1);
 
 % TODO: compute all sigma points
+sigma_points = zeros(n, 2*n+1);
 % First sigma point is the mean
 sigma_points(:, 1) = mu;
 % For remaining sigma points
@@ -30,6 +26,9 @@ for i = 1:2n
 endfor
 
 % TODO compute weight vectors w_m mean and w_c covariance
+%init the weights
+w_m = zeros(1, 2*n+1);
+w_c = zeros(1, 2*n+1);
 % Weights for first sigma value
 w_m(1,1) = lambda / (n + lambda);
 w_c(1, 1) = w_m(1, 1) + (1 - power(alpha, 2) + beta);
