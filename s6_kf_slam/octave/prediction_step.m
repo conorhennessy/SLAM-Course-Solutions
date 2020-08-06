@@ -21,10 +21,13 @@ lambda = scale - n;
 % TODO: Transform all sigma points according to the odometry command
 % Remember to vectorize your operations and normalize angles
 % Tip: the function normalize_angle also works on a vector (row) of angles
-sigma_points(1, :) = sigma_points(1, :) + u.t * normalize_angle(cos(sigma_points(1, :) + u.r1));
-sigma_points(2, :) = sigma_points(2, :) + u.t * normalize_angle(sin(sigma_points(2, :) + u.r1)); 
-sigma_points(3, :) = normalize_angle(sigma_points(3, :) + u.r1 + u.r2);
-
+%sigma_points(1, :) = sigma_points(1, :) + u.t * normalize_angle(cos(sigma_points(1, :) + u.r1));
+%sigma_points(2, :) = sigma_points(2, :) + u.t * normalize_angle(sin(sigma_points(2, :) + u.r1)); 
+%sigma_points(3, :) = normalize_angle(sigma_points(3, :) + u.r1 + u.r2);
+for i=1:2*n+1
+    sigma_points(1:3,i) = sigma_points(1:3,i) + [u.t*cos(sigma_points(3,i) + u.r1); u.t*sin(sigma_points(3,i) + u.r1); u.r1 + u.r2];
+    sigma_points(3,i) = normalize_angle(sigma_points(3,i));
+endfor
 
 % Computing the weights for recovering the mean
 wm = [lambda/scale, repmat(1/(2*scale),1,2*n)];
@@ -38,8 +41,8 @@ x_bar = 0;
 y_bar = 0;
 for i = 1:2*n+1
     mu = mu + wm(1, i) * sigma_points(:, i);
-    x_bar += wm(i) * cos(sigma_points(3,i));
-    y_bar += wm(i) * sin(sigma_points(3,i));
+    x_bar = x_bar + wm(i) * cos(sigma_points(3,i));
+    y_bar = y_bar + wm(i) * sin(sigma_points(3,i));
 endfor
 mu(3) = atan2(y_bar, x_bar);
 mu(3) = normalize_angle(mu(3));
@@ -60,6 +63,6 @@ R = zeros(size(sigma,1));
 R(1:3,1:3) = R3;
 
 % TODO: Add motion noise to sigma
-sigma += R;
+sigma = sigma + R;
 
 end

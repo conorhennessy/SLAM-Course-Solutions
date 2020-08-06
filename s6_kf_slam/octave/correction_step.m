@@ -66,8 +66,8 @@ for i = 1:m
 	y_bar = 0;
 	for j = 1:2*n+1
 		zm += wm(j) * z_points(:, j);
-		x_bar += wm(j) * cos(z_points(2, j));
-		y_bar += wm(j) * sin(z_points(2, j));
+		x_bar = x_bar + wm(j) * cos(z_points(2, j));
+		y_bar = y_bar + wm(j) * sin(z_points(2, j));
 	endfor
 	zm(2) = atan2(y_bar, x_bar);
 
@@ -79,7 +79,7 @@ for i = 1:m
 		diff_s = z_points(:, j) - zm;
 		% normalize the bearing after computing the difference
 		diff_s(2) = normalize_angle(diff_s(2));
-		S += wc(j) * diff_s * diff_s' + Q;
+		S = S + wc(j) * diff_s * diff_s' + Q;
 	endfor
 
 	% TODO: Compute Sigma_x_z, line 10 on slide 32 <--
@@ -92,7 +92,7 @@ for i = 1:m
 		diff_sigma(2) = normalize_angle(diff_sigma(2));
 		diff_s = z_points(:, j) - zm;
 		diff_s(2) = normalize_angle(diff_s(2));
-		sigma_x_z += wc(j) * diff_sigma * diff_s';
+		sigma_x_z = sigma_x_z + wc(j) * diff_sigma * diff_s';
 	endfor
 
 	% TODO: Compute the Kalman gain, line 11 on slide 32 <--
@@ -106,7 +106,7 @@ for i = 1:m
 	%Update mu
 	diff_z = z_actual - zm;
     diff_z(2) = normalize_angle(diff_z(2,:));
-	mu += k * diff_z;
+	mu = mu + k * diff_z;
 
 	%Update sigma
 	sigma = sigma - k * S * k';

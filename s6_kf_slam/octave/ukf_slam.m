@@ -41,6 +41,7 @@ showGui = true;  % show a window while the algorithm runs
 % Perform filter update for each odometry-observation pair read from the
 % data file.
 for t = 1:size(data.timestep, 2)
+%for t = 1:25
     disp('Time step t ='), disp(t)
 
     % Perform the prediction step of the UKF
@@ -56,7 +57,8 @@ for t = 1:size(data.timestep, 2)
 
 endfor
 
-%disp("Final system covariance matrix:"), disp(sigma)
+disp("Final system covariance matrix:"), disp(sigma)
+
 % Display the final state estimate
 disp("Final robot pose:")
 disp("mu_robot = "), disp(mu(1:3)), disp("sigma_robot = "), disp(sigma(1:3,1:3))
