@@ -38,7 +38,7 @@ for i = 1:numParticles
       robot_x = robot(1);
       robot_y = robot(2);
       robot_r = robot(3);
-      particles(i).landmarks(1).mu = [ robot_x + z(j).range * cos(normalize_angle(z(j).bearing + robot_r));
+      particles(i).landmarks(l).mu = [ robot_x + z(j).range * cos(normalize_angle(z(j).bearing + robot_r));
                                        robot_y + z(j).range * sin(normalize_angle(z(j).bearing + robot_r))];
 
       % get the Jacobian with respect to the landmark position
@@ -60,9 +60,10 @@ for i = 1:numParticles
       % This corresponds to line 14 of slide 30 of FAST SLAM lecture (12)
       Q = (H * particles(i).landmarks(l).sigma * H') + Q_t;
 
+
       % TODO: calculate the Kalman gain
       % This corresponds to line 15 of slide 30 of FAST SLAM lecture (12)
-      K = particles(i).landmarks(l).sigma * H' * inv(Q_t);
+      K = particles(i).landmarks(l).sigma * H' * inv(Q);
 
       % TODO: compute the error between the z and expectedZ (remember to normalize the angle)'
       % error for range and bearing
@@ -70,9 +71,9 @@ for i = 1:numParticles
 
       % TODO: update the mean and covariance of the EKF for this landmark
       % mean, this corresponds to line 16 of slide 30 of FAST SLAM lecture (12)
-      particles(i).landmarks(1).mu = particles(i).landmarks(1).mu + K * (Z_diff);
+      particles(i).landmarks(l).mu = particles(i).landmarks(l).mu + K * (Z_diff);
       % covariance, this corresponds to line 17 of slide 30 of FAST SLAM lecture (12)
-      particles(i).landmarks(1).sigma = (eye(2) - K * H) * particles(i).landmarks(1).sigma;
+      particles(i).landmarks(l).sigma = (eye(2) - K * H) * particles(i).landmarks(l).sigma;
 
       % TODO: compute the likelihood of this observation, multiply with the former weight
       %       to account for observing several features in one time step
