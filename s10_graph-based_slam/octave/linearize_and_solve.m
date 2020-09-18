@@ -81,9 +81,9 @@ for eid = 1:length(g.edges)
 
     % TODO: compute and add the term to H and b
     % Set indexes of the i'th pose in the graph
-    i = edge.fromIdx:edge.fromIdx+2;
+    i = edge.fromIdx:edge.fromIdx + 2;
     % Set indexes of the j'th pose in the graph, where j=i+1
-    j = edge.toIdx:edge.toIdx+2;
+    j = edge.toIdx:edge.toIdx + 1;
 
     %Set the information matrix
     omega = edge.information;

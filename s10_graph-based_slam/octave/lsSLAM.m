@@ -36,6 +36,7 @@ for i = 1:numIterations
   dx = linearize_and_solve(g);
 
   % TODO: apply the solution to the state vector g.x
+  g.x = g.x + dx;
 
   % plot the current state of the graph
   plot_graph(g, i);

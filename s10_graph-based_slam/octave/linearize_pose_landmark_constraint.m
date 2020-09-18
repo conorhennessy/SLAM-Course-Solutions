@@ -23,14 +23,14 @@ function [e, A, B] = linearize_pose_landmark_constraint(x, l, z)
 
   % Compute pose relative angle. 
   % Note: that using atan2 also normilizes the angle.
-  theta_i = atan2(Ri(2,1), Ri(1,1));
+  theta_i = atan2(Ri(2, 1), Ri(1, 1));
   
   % Set the robot pose coordinates
-  xi = x(1); 
+  xi = x(1);
   yi = x(2);
   
   % Set the landmark coordinates
-  xl = l(1); 
+  xl = l(1);
   yl = l(2);
 
   % Compute error function eij partial derivative with respect to pose x

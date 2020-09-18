@@ -15,7 +15,7 @@ function [e, A, B] = linearize_pose_pose_constraint(x1, x2, z)
 
   % TODO compute the error and the Jacobians of the error
 
-% Compute the homogenous transformations
+  % Compute the homogenous transformations
   X1 = v2t(x1);
   X2 = v2t(x2);
   Z = v2t(z);
@@ -31,16 +31,16 @@ function [e, A, B] = linearize_pose_pose_constraint(x1, x2, z)
   % each of the necesarry components for the computation are set separately. 
   
   % Set the measurment rotation matrix
-  Rij = Z(1:2, 1:2);
+  Rij = Z(1:3, 1:3);
   
   % Set pose X1 rotation matrix
-  Ri = X1(1:2, 1:2);
+  Ri = X1(1:3, 1:3);
   
   % Compute the pose X1 relative angle
-  theta_i = atan2(Ri(2,1),Ri(1, 1));
+  theta_i = atan2(Ri(2, 1),Ri(1, 1));
   
   % Compute the measurement relative angle
-  theta_ij = atan2(Rij(2,1),Rij(1, 1));
+  theta_ij = atan2(Rij(2, 1),Rij(1, 1));
    
   % Set pose X1 coordinates
   xi = x1(1);
