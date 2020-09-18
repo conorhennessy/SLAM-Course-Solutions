@@ -35,12 +35,29 @@ for eid = 1:length(g.edges)
 
 
     % TODO: compute and add the term to H and b
+    % Set indexes of the i'th pose in the graph
+    i = edge.fromIdx:edge.fromIdx+2;
+    % Set indexes of the j'th pose in the graph, where j=i+1
+    j = edge.toIdx:edge.toIdx+2;
 
+    %Set the information matrix
+    omega = edge.information;
+
+    % Compute the coefficent vector for both first and second pose
+    b(i) = b(i) + (e'*omega*A)';
+    b(j) = b(j) + (e'*omega*B)';
+
+    % Update the system matrix
+    H(i,i) = H(i,i) + A'*omega*A;
+    H(i,j) = H(i,j) + A'*omega*B;
+    H(j,i) = H(j,i) + B'*omega*A;
+    H(j,j) = H(j,j) + B'*omega*B;
 
     if (needToAddPrior)
       % TODO: add the prior for one pose of this edge
       % This fixes one node to remain at its current location
-      
+      H(1:3, 1:3) = H(1:3, 1:3) + eye(3, 3);
+
       needToAddPrior = false;
     end
 
@@ -63,7 +80,23 @@ for eid = 1:length(g.edges)
 
 
     % TODO: compute and add the term to H and b
+    % Set indexes of the i'th pose in the graph
+    i = edge.fromIdx:edge.fromIdx+2;
+    % Set indexes of the j'th pose in the graph, where j=i+1
+    j = edge.toIdx:edge.toIdx+2;
 
+    %Set the information matrix
+    omega = edge.information;
+
+    % Compute the coefficent vector for both first and second pose
+    b(i) = b(i) + (e'*omega*A)';
+    b(j) = b(j) + (e'*omega*B)';
+
+    % Update the system matrix
+    H(i,i) = H(i,i) + A'*omega*A;
+    H(i,j) = H(i,j) + A'*omega*B;
+    H(j,i) = H(j,i) + B'*omega*A;
+    H(j,j) = H(j,j) + B'*omega*B;
 
   end
 end
@@ -72,6 +105,6 @@ disp('solving system');
 
 % TODO: solve the linear system, whereas the solution should be stored in dx
 % Remember to use the backslash operator instead of inverting H
-
+dx = -H\b;
 
 end

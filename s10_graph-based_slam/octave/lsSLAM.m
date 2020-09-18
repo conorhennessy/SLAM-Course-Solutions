@@ -8,8 +8,8 @@ addpath('tools');
 % only leave one line uncommented
 
 % simulation datasets
-load ../data/simulation-pose-pose.dat
-%load ../data/simulation-pose-landmark.dat
+%load ../data/simulation-pose-pose.dat
+load ../data/simulation-pose-landmark.dat
 
 % real-world datasets
 %load ../data/intel.dat
@@ -46,7 +46,9 @@ for i = 1:numIterations
   printf('Current error %f\n', err);
 
   % TODO: implement termination criterion as suggested on the sheet
-
+  if (max(abs(dx)) < EPSILON)
+    break;
+  end
 end
 
 printf('Final error %f\n', err);
