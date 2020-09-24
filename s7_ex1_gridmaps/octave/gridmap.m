@@ -18,7 +18,8 @@ probOcc = 0.9;
 probFree = 0.35;
 
 % Map grid size in meters. Decrease for better resolution.
-gridSize = 0.5;
+gridSize = 0.1;
+% gridSize = 0.1 for making the video
 
 % Set up map boundaries and initialize map.
 border = 30;
