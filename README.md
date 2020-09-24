@@ -43,7 +43,7 @@ The video/plot result(s) can be found within `/plots` in each assignment folder.
 | **4** - EKF SLAM             | ![ekf_slam](s4_ekf_slam/plots/ekf.gif)                                       | 
 | **5** - Unscented Transform  | ![unscented](s5_unscented_transform/plots/unscented.png)                     | 
 | **6** - UKF SLAM             | ![ukf_slam](s6_ukf_slam/plots/ukf.gif)                                       | 
-| **7, ex1** - Grid Mapping    | ![grid_mapping](s7_ex1_gridmaps/plots/)                                      | 
+| **7, ex1** - Grid Mapping    | ![grid_mapping](s7_ex1_gridmaps/plots/0.1_resolution/gridmap_0.1.gif)        | 
 | **7, ex2** - Particle Filter | ![particle_filter](s7_ex2_particle_filter/plots/pf.gif)                      | 
 | **8** - FAST SLAM            | ![fast_slam](s8_fast_slam/plots/fast_slam.gif)                               | 
 | **9** - Odom Calibration     | ![odometry-calibration](s9_odom_calib/plots/odometry-calibration-result.png) | 
