@@ -37,17 +37,17 @@ More about conversion and differences between Octave & MATLAB can be found [here
 ## Results / plots
 The video/plot result(s) can be found within `/plots` in each assignment folder.
 
-| Assignment                   | Animation/Image                                                             | 
-| ---------------------------- | --------------------------------------------------------------------------- | 
-| **1** - Octave Tutorial      | ![octave_tutorial](s1_octave_tutorial/plots/odom.gif)                       | 
-| **4** - EKF SLAM             | ![ekf_slam](s4_ekf_slam/plots/ekf.gif)                                      | 
-| **5** - Unscented Transform  | ![unscented](s5_unscented_transform/plots/unscented.png)                    | 
-| **6** - UKF SLAM             | ![ukf_slam](s6_ukf_slam/plots/ukf.gif)                                      | 
-| **7, ex1** - Grid Mapping    | ![grid_mapping](s7_ex1_gridmaps/plots/)                                     | 
-| **7, ex2** - Particle Filter | ![particle_filter](s7_ex2_particle_filter/plots/pf.gif)                     | 
-| **8** - FAST SLAM            | ![fast_slam](s8_fast_slam/plots/fast_slam.gif)                              | 
-| **9** - Odom Calibration     | ![odometry-calibration](s9_odom_calib/plotsodometry-calibration-result.png) | 
-| **10** - Graph Based SLAM    | ![graph-based-slam_dlr](s10_graph-based_slam/plots/dlr.png)                 | 
+| Assignment                   | Animation/Image                                                              | 
+| ---------------------------- | ---------------------------------------------------------------------------- | 
+| **1** - Octave Tutorial      | ![octave_tutorial](s1_octave_tutorial/plots/odom.gif)                        | 
+| **4** - EKF SLAM             | ![ekf_slam](s4_ekf_slam/plots/ekf.gif)                                       | 
+| **5** - Unscented Transform  | ![unscented](s5_unscented_transform/plots/unscented.png)                     | 
+| **6** - UKF SLAM             | ![ukf_slam](s6_ukf_slam/plots/ukf.gif)                                       | 
+| **7, ex1** - Grid Mapping    | ![grid_mapping](s7_ex1_gridmaps/plots/)                                      | 
+| **7, ex2** - Particle Filter | ![particle_filter](s7_ex2_particle_filter/plots/pf.gif)                      | 
+| **8** - FAST SLAM            | ![fast_slam](s8_fast_slam/plots/fast_slam.gif)                               | 
+| **9** - Odom Calibration     | ![odometry-calibration](s9_odom_calib/plots/odometry-calibration-result.png) | 
+| **10** - Graph Based SLAM    | ![graph-based-slam_dlr](s10_graph-based_slam/plots/dlr.png)                  | 
 
 ## Other Solutions
 Below are other repositories with similar solutions to the course assignments.   
