@@ -26,6 +26,7 @@ robTrans = v2t(robPose);
 
 % TODO: compute robPoseMapFrame. Use your world_to_map_coordinates implementation.
 robPoseMapFrame = world_to_map_coordinates(robPose(1:2,:), gridSize, offset);
+robPoseMapFrame(3) = robPose(3);
 
 % Compute the Cartesian coordinates of the laser beam endpoints.
 % Set the third argument to 'true' to use only half the beams for speeding up the algorithm when debugging.
@@ -58,14 +59,14 @@ endfor
 %TODO: update the log odds values in mapUpdate for each free cell [freeCells] according to probFree.
 for i = 1:size(freeCells, 2)
         x = freeCells(1, i);
-        y = freeCells(1, i);
+        y = freeCells(2, i);
         mapUpdate(x, y) = prob_to_log_odds(probFree);
 endfor
 
 %TODO: update the log odds values in mapUpdate for each laser endpoint [laserEndPntsMapFrame] according to probOcc.
 for i = 1:size(laserEndPntsMapFrame, 2)
         x = laserEndPntsMapFrame(1, i);
-        y = laserEndPntsMapFrame(1, i);
+        y = laserEndPntsMapFrame(2, i);
         mapUpdate(x, y) = prob_to_log_odds(probOcc);
 endfor
 
