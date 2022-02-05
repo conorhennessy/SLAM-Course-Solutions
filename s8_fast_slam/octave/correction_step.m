@@ -78,7 +78,7 @@ for i = 1:numParticles
       % TODO: compute the likelihood of this observation, multiply with the former weight
       %       to account for observing several features in one time step
       % Weight, this corresponds to line 13 of slide 44 of FAST SLAM lecture (12)
-      particles(i).weight = 1/sqrt(det(2 * pi * Q)) * exp(-0.5 * (Z_diff)' * inv(Q) * Z_diff);
+      particles(i).weight = particles(i).weight * 1/sqrt(det(2 * pi * Q)) * exp(-0.5 * (Z_diff)' * inv(Q) * Z_diff);
 
     end
 
