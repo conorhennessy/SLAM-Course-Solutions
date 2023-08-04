@@ -19,8 +19,8 @@ mu(3, 1) = normalize_angle(mu(3, 1));
 
 % Compute the 3x3 Jacobian Gx of the motion model
 Gx = eye(3, 3);
-Gx(1, 3) = -u.t * cos(mu(3) + u.r1);
-Gx(2, 3) = u.t * sin(mu(3) + u.r1);
+Gx(1, 3) = -u.t * sin(mu(3) + u.r1);
+Gx(2, 3) = u.t * cos(mu(3) + u.r1);
 
 % Construct the full Jacobian G
 G = [Gx, zeros(3, n-3); zeros(n-3, 3), eye(n-3)];
